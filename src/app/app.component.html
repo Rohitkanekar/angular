@@ -1,0 +1,13 @@
+@if(stateManagementService.isLoggedIn()){
+<app-sidebar></app-sidebar>
+<main [ngClass]="{ 'mainCollapse': sideBarService.showSidebar }">
+    <app-header></app-header>
+    <div class="block-body">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</main>
+}
+@else {
+<router-outlet></router-outlet>
+}

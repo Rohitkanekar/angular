@@ -1,0 +1,59 @@
+<p class="mb-2">Welcome Back !!!</p>
+<h2 class="mb-3">Sign In</h2>
+
+<!-- Login Form -->
+<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+
+  <!-- Identifier (Email or Phone) -->
+  <div class="form-group mb-3">
+    <label for="identifier">Email or Phone</label>
+    <input
+      id="identifier"
+      type="text"
+      pInputText
+      formControlName="identifier"
+      placeholder="Enter Email or Phone"
+      class="w-full"
+    />
+    @if(formControls.identifier?.invalid && (formControls.identifier?.touched || formControls.identifier?.dirty)){
+      @if(formControls.identifier?.errors?.['required']){
+        <div class="error text-red-500 text-sm mt-1">Email or Phone is required.</div>
+      }
+    }
+  </div>
+
+  <!-- Password -->
+  <div class="form-group mb-3">
+    <label for="password">Password</label>
+    <p-password
+      id="password"
+      formControlName="password"
+      [toggleMask]="true"
+      [feedback]="false"
+      placeholder="Enter Password"
+      class="w-full"
+      [ngClass]="{
+        'ng-invalid ng-dirty': formControls.password?.invalid && (formControls.password?.touched || formControls.password?.dirty)
+      }"
+    ></p-password>
+    @if(formControls.password?.invalid && (formControls.password?.touched || formControls.password?.dirty)){
+      @if(formControls.password?.errors?.['required']){
+        <div class="error text-red-500 text-sm mt-1">Password is required.</div>
+      }
+    }
+  </div>
+
+  <!-- Submit Button -->
+  <div class="form-group">
+    <p-button
+      icon="pi pi-check"
+      label="Submit"
+      type="submit"
+      styleClass="w-full"
+      [disabled]="loginForm.invalid"
+    ></p-button>
+  </div>
+</form>
+
+<!-- Toast Notifications -->
+<p-toast></p-toast>

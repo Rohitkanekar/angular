@@ -1,0 +1,18 @@
+.block-body {
+    height: calc(100vh - 92.8px);
+    padding: 16px;
+    background-color: #edf1f7;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    top: 55.2px;
+    position: relative;
+}
+
+main {
+    margin-left: 300px;
+    transition: margin-left .5s ease-in-out;
+
+    &.mainCollapse {
+        margin-left: 70px;
+    }
+}
