@@ -1,0 +1,95 @@
+<h2 class="mb-3">Pending Recipes (Admin)</h2>
+
+@if(pendingRecipes.length){
+@for (item of pendingRecipes || []; track $index) {
+<h4>{{ item.id }}. {{item.name}}</h4>
+<p-card styleClass="mb-4">
+    <div class="grid">
+        <div class="xl:col-2">
+            @if(item.image){
+            <img [src]="item.image" alt="Recipe Image" />
+            }
+        </div>
+        <div class="xl:col-10">
+            <div class="grid">
+                <div class="xl:col-4 pb-0">
+                    <strong>Id:</strong>
+                    <div>{{ item.id }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>User Id:</strong>
+                    <div>{{ item.userId }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Name:</strong>
+                    <div>{{ item.name }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Cuisine:</strong>
+                    <div>{{ item.cuisine }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Calories Per Serving:</strong>
+                    <div>{{ item.caloriesPerServing }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Cooking Time:</strong>
+                    <div>{{ item.cookTimeMinutes }} mins</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Preparation Time:</strong>
+                    <div>{{ item.prepTimeMinutes }} mins</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Difficulty:</strong>
+                    <div>{{ item.difficulty }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Rating:</strong>
+                    <div>{{ item.rating || '-' }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Review Count:</strong>
+                    <div>{{ item.reviewCount || '-' }}</div>
+                </div>
+                <div class="xl:col-4 pb-0">
+                    <strong>Servings:</strong>
+                    <div>{{ item.servings }}</div>
+                </div>
+                <div class="xl:col-12 pb-0">
+                    <strong>Tags:</strong>
+                    <div>{{ item.tags }}</div>
+                </div>
+                <div class="xl:col-12">
+                    <div class="flex gap-4">
+                        <p-button label="Approve" (click)="approveRecipe(item.id)" icon="pi pi-check" />
+                        <p-button label="Delete" (click)="deleteRecipe(item.id)" icon="pi pi-trash" severity="danger" />
+                    </div>
+                </div>
+
+                <!-- <div class="xl:col-12">
+                    <strong>Ingredients:</strong>
+                    <ol>
+                        @for (ingredient of item.ingredients; track $index) {
+                        <li>{{ ingredient }}</li>
+                        }
+                    </ol>
+                </div> -->
+
+                <!-- <div class="xl:col-12">
+                    <strong>Instructions:</strong>
+                    <ol>
+                        @for (instruction of item.instructions; track $index) {
+                        <li>{{ instruction }}</li>
+                        }
+                    </ol>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</p-card>
+}
+}
+@else {
+<p>No pending recipes.</p>
+}

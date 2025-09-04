@@ -1,0 +1,37 @@
+aside {
+    width: 300px;
+    background-color: var(--color-white);
+    box-shadow: 0 .5rem 1rem #2c33491a;
+    transition: width .5s ease-in-out;
+
+    &.asideCollapse {
+        width: 70px;
+    }
+
+    .logo {
+        border-bottom: 1px solid #cbd5e1;
+        img {
+            transition: all 0.5s ease-in-out;
+            height: 54.6px;
+        }
+    }
+
+    .links {
+        height: calc(100vh - 51.85px);
+
+        a {
+            color: var(--color-black);
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        li {
+            &.active {
+                a {
+                    color: var(--color-white);
+                    background-color: var(--color-blue);
+                }
+            }
+        }
+
+    }
+}

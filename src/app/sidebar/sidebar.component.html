@@ -1,0 +1,67 @@
+@if(stateManagementService.isLoggedIn()){
+<aside class="fixed" [ngClass]="{ 'asideCollapse': sideBarService.showSidebar }">
+    <div class="logo">
+        @if(!this.sideBarService.showSidebar){
+        <img src="assets/images/logo.png" alt="Logo" class="w-5 m-auto">
+        }
+        @else {
+        <img src="assets/images/logo-collapse.png" alt="Logo" class="w-9 m-auto">
+
+        }
+    </div>
+    <div class="links overflow-auto">
+        <ul>
+
+            @if(stateManagementService.getCurrentUser()?.role === 0){
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [ngClass]="{ 'justify-content-center': sideBarService.showSidebar }"
+                    class="p-3 flex align-items-center" [routerLink]="['/home']">
+                    <i class="pi pi-home"></i>
+                    @if(!this.sideBarService.showSidebar){
+                    <span class="ml-2">Home</span>
+                    }
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [ngClass]="{ 'justify-content-center': sideBarService.showSidebar }"
+                    class="p-3 flex align-items-center" [routerLink]="['/all-recipes']">
+                    <i class="pi pi-slack"></i>
+                    @if(!this.sideBarService.showSidebar){
+                    <span class="ml-2">All Recipes</span>
+                    }</a>
+            </li>
+            }
+
+            @if(stateManagementService.getCurrentUser()?.role === 1){
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [ngClass]="{ 'justify-content-center': sideBarService.showSidebar }"
+                    class="p-3 flex align-items-center" [routerLink]="['/local-recipes']">
+                    <i class="pi pi-slack"></i>
+                    @if(!this.sideBarService.showSidebar){
+                    <span class="ml-2">Local Recipes</span>
+                    }</a>
+            </li>
+            }
+
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [ngClass]="{ 'justify-content-center': sideBarService.showSidebar }"
+                    class="p-3 flex align-items-center" [routerLink]="['/employees']">
+                    <i class="pi pi-user"></i>
+                    @if(!this.sideBarService.showSidebar){
+                    <span class="ml-2">Employees</span>
+                    }
+                </a>
+            </li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [ngClass]="{ 'justify-content-center': sideBarService.showSidebar }"
+                    class="p-3 flex align-items-center" [routerLink]="['/flight']">
+                    <i class="pi pi-send"></i>
+                    @if(!this.sideBarService.showSidebar){
+                    <span class="ml-2">Flight</span>
+                    }
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+}

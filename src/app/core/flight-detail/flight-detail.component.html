@@ -1,0 +1,31 @@
+
+<h2>Flight Details</h2>
+
+<div class="grid">
+
+  <div class="xl:col-12">
+    <p-button label="Back" icon="pi pi-arrow-left" styleClass="mb-3" (click)="goBack()"></p-button>
+  </div>
+
+  <div class="xl:col-3" *ngFor="let flight of flights">
+    <p-card>
+      <div>
+        <h3>{{ flight.company }}</h3>
+        <p>Trip Type: {{flight.tripType}}</p>
+        <p>From: {{ flight.from }} <i class="pi pi-arrow-right"></i> To: {{ flight.to }}</p>
+        <p>Travel Date: {{ flight.date}} {{flight.time}}</p>
+        @if(flight.returnDate){
+        <p>From: {{ flight.to }} <i class="pi pi-arrow-right"></i> To: {{ flight.from }}</p>
+        <p>Return date: {{flight.returnDate}} {{flight.time}}</p>
+        }
+        <p>Class: {{ flight.class }}</p>
+        <p>Travelers: {{ flight.travelers }}</p>
+        <p>Price: ₹{{ flight.price | indianNumber}}</p>
+        <p>Taxes: ₹{{ flight.taxes }}</p>
+        <p><strong>Total: ₹{{ flight.total | indianNumber }}</strong></p>
+        <p-button label="Book Now" (click)="book(flight)" />
+      </div>
+    </p-card>
+  </div>
+</div>
+<p-toast></p-toast>
